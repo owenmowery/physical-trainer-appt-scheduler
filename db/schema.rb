@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 2021_05_10_171827) do
 
   create_table "clients", force: :cascade do |t|
     t.string "name"
+    t.string "client_email"
+    t.string "password_digest"
     t.integer "age"
     t.string "height"
     t.integer "weight"
@@ -32,6 +34,8 @@ ActiveRecord::Schema.define(version: 2021_05_10_171827) do
 
   create_table "trainers", force: :cascade do |t|
     t.string "name"
+    t.string "trainer_email"
+    t.string "password_digest"
     t.string "gym_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
