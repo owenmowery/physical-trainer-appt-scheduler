@@ -2,9 +2,8 @@ class ClientsController < ApplicationController
     def signup
     end
 
-    def create
-        @client = Client.new(client_params)
-        render 'clients/index'
+    def login
+        
     end
 
     def client_params
