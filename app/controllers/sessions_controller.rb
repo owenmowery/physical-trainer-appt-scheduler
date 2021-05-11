@@ -11,7 +11,13 @@ class SessionsController < ApplicationController
     end
 
     def trainer_login
-        
+        @trainer = Trainer.find_by(trainer_email: params[:trainer_email])
+        if @trainer && @trainer.authenticate(params[:password])
+            session[:trainer_id] = @trainer.id
+            redirect_to trainers_path
+        else
+            redirect_to trainer_login_path
+        end
     end
 
 end

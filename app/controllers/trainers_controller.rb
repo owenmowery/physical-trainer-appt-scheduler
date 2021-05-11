@@ -1,11 +1,10 @@
 class TrainersController < ApplicationController
     def signup
-        
     end
 
     def create
-        @trainer = Trainer.create(trainer_params)
-        if @trainer
+        @trainer = Trainer.new(trainer_params)
+        if @trainer.save
             session[:trainer_id] = @trainer.id
             redirect_to trainers_path
         else
@@ -16,6 +15,6 @@ class TrainersController < ApplicationController
     private
 
     def trainer_params
-        params.permit(:name, :trainer_email, :gym_name)
+        params.permit(:name, :trainer_email, :gym_name, :password)
     end
 end

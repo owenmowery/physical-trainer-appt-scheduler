@@ -1,0 +1,11 @@
+<h1>Trainer Log In</h1>
+<%= form_with model: @trainer, local: true do |f| %>
+
+    <%= f.label :email %>
+    <%= f.email_field :trainer_email %><br>
+
+    <%= f.label :password %>
+    <%= f.password_field :password %><br>
+
+    <%= f.submit %>
+<% end %>

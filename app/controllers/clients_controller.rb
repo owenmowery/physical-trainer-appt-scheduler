@@ -6,8 +6,8 @@ class ClientsController < ApplicationController
     end
 
     def create
-        @client = Client.create(client_params)
-        if @client
+        @client = Client.new(client_params)
+        if @client.save
             session[:client_id] = @client.id
             redirect_to clients_path
         else
@@ -18,6 +18,6 @@ class ClientsController < ApplicationController
     private
 
     def client_params
-        params.permit(:name, :client_email, :age, :height, :weight, :goal)
+        params.permit(:name, :client_email, :age, :height, :weight, :goal, :password)
     end
 end
