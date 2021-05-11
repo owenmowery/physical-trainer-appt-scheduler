@@ -4,7 +4,7 @@
     <%= f.text_field :name %><br>
 
     <%= f.label :client_email %>
-    <%= f.text_field :client_email %><br>
+    <%= f.email_field :client_email %><br>
 
     <%= f.label :age %>
     <%= f.text_field :age %><br>
@@ -18,7 +18,8 @@
     <%= f.label :goal %>
     <%= f.text_area :goal %><br>
 
-    Password: <%= f.password_field :password %>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
 
     <%= f.submit %>
 <% end %>
