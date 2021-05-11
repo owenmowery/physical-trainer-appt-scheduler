@@ -8,10 +8,10 @@ Rails.application.routes.draw do
   post '/client_login', to: 'sessions#client_login'
 
   get '/trainer_signup', to: 'trainers#signup'
-  post '/trainer_signup', to: 'sessions#trainer_login'
+  post '/trainer_signup', to: 'trainers#create'
 
   get '/trainer_login', to: 'trainers#login'
-  post '/trainer_login', to: 'trainers#trainer_login'
+  post '/trainer_login', to: 'sessions#trainer_login'
 
   resources :appointments
   resources :clients
