@@ -1,11 +1,11 @@
 <h1>Login</h1>
-<%= form_with model: @client do |f| %>
+<%= form_with model: @client, local: true do |f| %>
   
     <%= f.label :client_email %>
     <%= f.text_field :client_email %><br>
 
     <%= f.label :password %>
-    <%= f.text_field :password_digest %><br>
+    <%= f.text_field :password %><br>
 
     <%= f.submit %>
 <% end %>

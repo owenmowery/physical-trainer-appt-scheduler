@@ -1,5 +1,5 @@
 <h1>Sign up form</h1>
-<%= form_with model: @client do |f| %>
+<%= form_with model: @client, local: true do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %><br>
 
@@ -19,7 +19,6 @@
     <%= f.text_area :goal %><br>
 
     Password: <%= f.password_field :password %>
-    Password Confirmation: <%= f.password_field :password_confirmation %>
 
     <%= f.submit %>
 <% end %>
