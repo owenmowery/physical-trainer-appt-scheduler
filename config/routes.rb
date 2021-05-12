@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get '/trainer_login', to: 'trainers#login'
   post '/trainer_login', to: 'sessions#trainer_login'
 
+  get '/clients/:id', to: 'clients#show'
+
   resources :appointments
   resources :clients
   resources :trainers

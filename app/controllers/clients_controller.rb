@@ -1,4 +1,6 @@
 class ClientsController < ApplicationController
+    #before_action :find_client, only: [:show, :edit, :update, :destroy]
+
     def signup
     end
 
@@ -15,9 +17,25 @@ class ClientsController < ApplicationController
         end
     end
 
+    def index
+        if logged_in?
+            @client = current_user
+        else
+            redirect_to client_login_path
+        end
+    end
+
+    def show
+        @client = current_user
+    end
+
     private
 
     def client_params
         params.permit(:name, :client_email, :age, :height, :weight, :goal, :password)
+    end
+
+    def find_client
+        @client = Client.find_by_id(params[:id])
     end
 end
