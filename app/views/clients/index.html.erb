@@ -1,7 +1,10 @@
 <h1>Welcome, <%= @client.name %>!</h1>
 <h3>Schedule personal training appointments with trainers from different gyms all around you</h3>
 
-<div>
+<div class="row">
     <h3><%= link_to 'View', client_path(@client) %> your profile</h3>
-    <h3>View all appointments here:</h3>
+    <h3><%= link_to 'Schedule An Appointment', new_appointment_path %></h3>
+</div>
+<div>
+    <h3>View all appointments below:</h3>
 </div>

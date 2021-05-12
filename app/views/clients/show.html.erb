@@ -1,1 +1,13 @@
-<h1>Show page</h1>
+<h1>Your Profile Details: </h1>
+
+<div>
+    <p>Name: <%= @client.name %></p>
+    <p>Age: <%= @client.age %></p>
+    <p>Height: <%= @client.height %></p>
+    <p>Weight: <%= @client.weight %></p>
+    <p>Fitness Goal: <%= @client.goal %></p>
+</div>
+
+<div>
+    <p><%= link_to 'Back', clients_path %></p>
+</div>
