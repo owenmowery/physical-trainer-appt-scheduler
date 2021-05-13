@@ -3,7 +3,7 @@
 
 <div class="row">
     <h3><%= link_to 'View', client_path(@client) %> your profile</h3>
-    <h3><%= link_to 'Schedule An Appointment', new_appointment_path %></h3>
+    <h3><%= link_to 'Schedule An Appointment', new_client_appointment_path(@client) %></h3>
 </div>
 <div>
     <h3>View all appointments below:</h3>
