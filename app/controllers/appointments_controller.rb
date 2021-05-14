@@ -8,7 +8,7 @@ class AppointmentsController < ApplicationController
             trainer = Trainer.find_by_name(params_trainer_name[:trainer_name])
             @appointment.trainer_id = trainer.id 
             if @appointment.save
-                redirect_to client_appointment_path(@appointment)
+                redirect_to clients_path
             else
                 flash[:error] = "Appointment schedule was unsuccessful, please try again."
                 redirect_to clients_path

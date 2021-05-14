@@ -1,5 +1,4 @@
 class ClientsController < ApplicationController
-    #before_action :find_client, only: [:show, :edit, :update, :destroy]
 
     def signup
     end
@@ -20,6 +19,7 @@ class ClientsController < ApplicationController
     def index
         if logged_in?
             @client = current_user
+            #binding.pry
         else
             redirect_to client_login_path
         end
