@@ -5,9 +5,10 @@ class AppointmentsController < ApplicationController
     end
 
     def show
-        @appointment = Appointment.find_by_id(params[:id])
+        @appointment = Appointment.find_by_id(params[:client_id])
         @client = Client.find_by_id(@appointment.client_id)
     end
+   
 
 
 
@@ -17,14 +18,12 @@ class AppointmentsController < ApplicationController
     end
 
     def create
-        binding.pry
         if logged_in?
             @appointment = Appointment.new(appt_params)
-            binding.pry
             find_client
             trainer = Trainer.find_by_name(params_trainer_name[:trainer_name])
             @appointment.trainer_id = trainer.id
-            binding.pry 
+            @appointment.client_id = params[:client_id]
             if @appointment.save
                 redirect_to client_appointment_path(@appointment, @client)
             else
@@ -37,8 +36,6 @@ class AppointmentsController < ApplicationController
 
     end
 
-    
-
     private
 
     def find_client
@@ -46,10 +43,10 @@ class AppointmentsController < ApplicationController
     end
         
     def appt_params
-        params.permit(:appt_datetime, :client_id)
+        params.require(:client).permit(:appt_datetime, :client_id)
     end
 
     def params_trainer_name
-        params.permit(:trainer_name)
+        params.require(:client).permit(:trainer_name)
     end
 end

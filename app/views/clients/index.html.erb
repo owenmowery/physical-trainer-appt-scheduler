@@ -8,10 +8,22 @@
 <div>
     <h3>View all scheduled appointments below:</h3>
 </div>
+<% if @client.appointments.count > 1 %>
+    <% @client.appointments.each do |a| %>
+        <% i = 0 %>
+        <div>
+            <h4>Training Appointment <%= i %></h4>
+            <p>You're personal training appointment is scheduled with Trainer: <%= @client.appointments[i].trainer.name %></p>
+            <p>Location: <%= @client.appointments[i].trainer.gym_name %></p>
+            <p>On: <%= @client.appointments[i].appt_datetime.strftime("%A, %B %d at %I:%M%P") %></p>
+        </div>
+        <% i++ %>
+    <% end %>
+<% else %>
     <div>
         <h4>Training Appointment <%= 1 %></h4>
         <p>You're personal training appointment is scheduled with Trainer: <%= @client.appointments[0].trainer.name %></p>
         <p>Location: <%= @client.appointments[0].trainer.gym_name %></p>
         <p>On: <%= @client.appointments[0].appt_datetime.strftime("%A, %B %d at %I:%M%P") %></p>
-
     </div>
+<% end >

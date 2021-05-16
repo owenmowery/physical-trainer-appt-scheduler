@@ -13,15 +13,15 @@ Rails.application.routes.draw do
   get '/trainer_login', to: 'trainers#login'
   post '/trainer_login', to: 'sessions#trainer_login'
 
-  post '/clients/:client_id/appointments/new', to: 'appointments#create'
+  patch '/clients/:client_id/appointments', to: 'appointments#create'
 
-  resources :clients
+  #resources :clients
 
   resources :trainers do
-    resources :appointments
+    #resources :appointments
   end
   resources :clients do
-      resources :appointments
+      resources :appointments, only: [:new, :create, :show]
   end
  
   
