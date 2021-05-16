@@ -6,6 +6,22 @@ class ClientsController < ApplicationController
     def login 
     end
 
+    def index
+        if logged_in?
+            @client = current_user
+            @appointment = Appointment.find_by_id(@client.id)
+        else
+            redirect_to client_login_path
+        end
+    end
+
+    def show
+        @client = current_user
+    end
+
+    def new
+    end
+
     def create
         @client = Client.new(client_params)
         if @client.save
@@ -16,18 +32,7 @@ class ClientsController < ApplicationController
         end
     end
 
-    def index
-        if logged_in?
-            @client = current_user
-            #binding.pry
-        else
-            redirect_to client_login_path
-        end
-    end
-
-    def show
-        @client = current_user
-    end
+    
 
     private
 

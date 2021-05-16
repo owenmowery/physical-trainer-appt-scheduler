@@ -1,12 +1,17 @@
 <h1>Welcome, <%= @client.name %>!</h1>
-<h3>Schedule personal training appointments with trainers from different gyms all around you</h3>
+<h2>Schedule personal training appointments with trainers from different gyms all around you</h2>
 
 <div class="row">
     <h3><%= link_to 'View', client_path(@client) %> your profile</h3>
     <h3><%= link_to 'Schedule An Appointment', new_client_appointment_path(@client) %></h3>
 </div>
 <div>
-    <h3>View all appointments below:</h3>
-    <%= @client.appointments[0].appt_datetime %>
-
+    <h3>View all scheduled appointments below:</h3>
 </div>
+    <div>
+        <h4>Training Appointment <%= 1 %></h4>
+        <p>You're personal training appointment is scheduled with Trainer: <%= @client.appointments[0].trainer.name %></p>
+        <p>Location: <%= @client.appointments[0].trainer.gym_name %></p>
+        <p>On: <%= @client.appointments[0].appt_datetime.strftime("%A, %B %d at %I:%M%P") %></p>
+
+    </div>

@@ -1,5 +1,5 @@
 <h1>Schedule a 30 minute training session!</h1>
-<%= form_with model: @appointment do |f| %>
+<%= form_with model: @client, local: true do |f| %>
 
     <label>Choose an available trainer: </label>
     <%= f.collection_select :trainer_name, Trainer.all, :name, :name %>

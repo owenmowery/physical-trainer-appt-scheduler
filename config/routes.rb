@@ -15,11 +15,13 @@ Rails.application.routes.draw do
 
   post '/clients/:client_id/appointments/new', to: 'appointments#create'
 
+  resources :clients
+
   resources :trainers do
     resources :appointments
   end
   resources :clients do
-      resources :appointments, only: [:new, :create, :show]
+      resources :appointments
   end
  
   
