@@ -5,13 +5,10 @@ class AppointmentsController < ApplicationController
     end
 
     def show
-        @appointment = Appointment.find_by_id(params[:client_id])
+        @appointment = Appointment.find_by_id(params[:id])
         @client = Client.find_by_id(@appointment.client_id)
     end
    
-
-
-
     def new
         find_client
         @appointment = @client.appointments.build

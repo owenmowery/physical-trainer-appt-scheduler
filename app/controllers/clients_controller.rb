@@ -9,7 +9,7 @@ class ClientsController < ApplicationController
     def index
         if logged_in?
             @client = current_user
-            @appointment = Appointment.find_by_id(@client.id)
+            @appointments = @client.appointments
         else
             redirect_to client_login_path
         end
