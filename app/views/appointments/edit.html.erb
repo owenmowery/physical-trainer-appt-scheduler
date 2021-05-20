@@ -1,0 +1,12 @@
+<h3>Edit your existing appointment: </h3>
+<%= form_for [@client, @appointment] do |f| %>
+    <label>Edit Current Trainer: <%= @appointment.trainer.name %></label>
+    <br>
+    <label>Select new trainer: </label>
+    <%= f.collection_select :trainer, Trainer.all, :name, :name %>
+    <br>
+    <label>Edit Date and Time: </label>
+    <%= f.datetime_select :appt_datetime %>
+    <br>
+    <%= f.submit :Update %>
+<% end %>

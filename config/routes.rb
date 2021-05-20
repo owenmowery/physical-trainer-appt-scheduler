@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     #resources :appointments
   end
   resources :clients do
-      resources :appointments, only: [:new, :create, :show]
+      resources :appointments, only: [:new, :create, :show, :edit, :update]
   end
  
   

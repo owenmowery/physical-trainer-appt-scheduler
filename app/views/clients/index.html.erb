@@ -19,5 +19,12 @@
         </div>
         <% i = i + 1 %>
     <% end %>
+<% else %>
+    <div>
+        <h3><%= link_to 'Appointment', client_appointment_path(@client, @appointments[0]) %> 1</h3>
+        <p>On: <%= @client.appointments[0].appt_datetime.strftime("%A, %B %d at %I:%M%P") %></p>
+        <p>With: <%= @client.appointments[0].trainer.name %></p>
+        <p>At: <%= @client.appointments[0].trainer.gym_name %></p>
+    </div>
 <% end %>
 

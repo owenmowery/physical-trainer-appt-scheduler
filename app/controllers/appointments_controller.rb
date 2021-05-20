@@ -33,10 +33,32 @@ class AppointmentsController < ApplicationController
 
     end
 
+    def edit
+        @appointment = Appointment.find_by_id(params[:id])
+        find_client
+    end
+
+    def update
+        @appointment = Appointment.find_by_id(params[:id])
+        find_trainer
+        binding.pry
+        @appointment.trainer_id = @trainer.id
+        @appointment.update(update_params)
+        binding.pry
+    end
+
     private
 
     def find_client
         @client = Client.find_by_id(params[:client_id])
+    end
+
+    def find_trainer
+        @trainer = Trainer.find_by_name(params[:appointment][:trainer])
+    end
+
+    def update_params
+        params.require(:appointment).permit(:appt_datetime)
     end
         
     def appt_params

@@ -3,4 +3,5 @@
 <h3>When: <%= @appointment.appt_datetime.strftime("%A, %B %d at %I:%M%P") %></h3>
 <h3>Your Trainer: <%= @appointment.trainer.name %></h3>
 <h3>At: <%= @appointment.trainer.gym_name %></h3>
+<p><%= link_to 'Edit', edit_client_appointment_path(@client, @appointment) %></p>
 <p><%= link_to 'Back', clients_path %></p>
