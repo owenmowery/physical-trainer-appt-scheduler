@@ -1,3 +1,20 @@
-<h1>Welcome to Trainer Find!</h1>
-<p>Client <%= link_to 'Sign up ', client_signup_path %> or <%= link_to 'Login', client_login_path %></p>
-<p>Trainer <%= link_to 'Sign up ', trainer_signup_path %> or <%= link_to 'Login', trainer_login_path %></p>
+<!DOCTYPE html>
+<html>
+    <head>
+    <link rel="stylesheet" type="text/css" href="app/assests/stylesheets/grid.css">
+    <link rel="stylesheet" type="text/css" href="app/assests/stylesheets/style.css">
+    </head>
+    <body>
+        <div>
+            <h1 class="title">Welcome to Trainer Find!</h1>
+        </div>
+        <div class="row">
+            <div class="col span-1-of-2 sign-up-box">
+                <p>Client <%= link_to 'Sign up ', client_signup_path %> or <%= link_to 'Login', client_login_path %></p>
+            </div>
+            <div class="col span-1-of-2 sign-up-box">
+                <p>Trainer <%= link_to 'Sign up ', trainer_signup_path %> or <%= link_to 'Login', trainer_login_path %></p>
+            </div>    
+        </div>
+    </body>
+</html>
