@@ -51,3 +51,18 @@ section {
   border: 1px solid #000000;
   color: #fff;
 }
+
+.sign-up-box h2 {
+    margin-left: 65px;
+}
+
+.login-link {
+    text-decoration: none;
+    background-color: #20bf6b;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+}

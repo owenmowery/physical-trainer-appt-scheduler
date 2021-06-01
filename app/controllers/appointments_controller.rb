@@ -5,8 +5,9 @@ class AppointmentsController < ApplicationController
     end
 
     def show
+        #binding.pry
         @appointment = Appointment.find_by_id(params[:id])
-        @client = Client.find_by_id(@appointment.client_id)
+        @client = Client.find_by_id(params[:client_id])
     end
    
     def new
@@ -22,7 +23,7 @@ class AppointmentsController < ApplicationController
             @appointment.trainer_id = trainer.id
             @appointment.client_id = params[:client_id]
             if @appointment.save
-                redirect_to client_appointment_path(@appointment, @client)
+                redirect_to client_appointment_path(@client, @appointment)
             else
                 flash[:error] = "Appointment schedule was unsuccessful, please try again."
                 redirect_to clients_path
@@ -40,11 +41,11 @@ class AppointmentsController < ApplicationController
 
     def update
         @appointment = Appointment.find_by_id(params[:id])
+        find_client
         find_trainer
-        binding.pry
         @appointment.trainer_id = @trainer.id
         @appointment.update(update_params)
-        binding.pry
+        redirect_to client_appointment_path(@client, @appointment)
     end
 
     private

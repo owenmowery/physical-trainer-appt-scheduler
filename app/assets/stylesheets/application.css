@@ -14,5 +14,13 @@
  *= require_self
  */
 
+ .logout-btn:link,
+ .logout-btn:visited {
+    background-color: #000000;
+    border: 1px solid #000000;
+    color: #fff;
+ }
+
+
 
 

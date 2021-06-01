@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
   #resources :clients
 
+  delete '/logout', to: 'sessions#destroy'
+
   resources :trainers do
     #resources :appointments
   end
