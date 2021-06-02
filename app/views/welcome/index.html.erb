@@ -13,6 +13,7 @@
                 <h2>Client</h2>
                 <p class="login-link"><%= link_to 'Sign up ', client_signup_path %></p>
                 <p class="login-link"><%= link_to 'Login', client_login_path %></p>
+                <p><%= link_to 'Log in with Google', '/auth/google_oauth2', method: :post%></p>
             </div>
             <div class="col span-1-of-2 sign-up-box">
                 <h2>Trainer</h2> 

@@ -20,9 +20,28 @@ class SessionsController < ApplicationController
         end
     end
 
+    def google
+        @client = Client.find_or_create_by(client_email: auth["info"]["name"]) do |user|
+            user.name = auth["info"]["name"]
+            user.password = SecureRandom.hex
+        end
+        if @client && @client.id
+            session[:user_id] = @client.id
+            redirect_to @client
+        else
+            redirect_to "/"
+        end
+    end
+
     def destroy 
         session.clear
         redirect_to "/"
+    end
+
+    private
+
+    def auth 
+        request.env['omniauth.auth']
     end
 
 end

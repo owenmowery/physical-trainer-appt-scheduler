@@ -19,6 +19,9 @@ Rails.application.routes.draw do
 
   delete '/logout', to: 'sessions#destroy'
 
+  #omniauth 
+  match '/auth/:google_oauth2/callback' => 'sessions#google', via: [:get, :post]
+
   resources :trainers do
     #resources :appointments
   end
