@@ -12,6 +12,12 @@ class TrainersController < ApplicationController
         end
     end
 
+    def index
+        @trainer = Trainer.find_by_id(session[:trainer_id])
+        @appointments = @trainer.appointments
+        @upcoming_appointments = Appointment.upcoming_appointments(Time.now.midnight)
+    end
+
     private
 
     def trainer_params

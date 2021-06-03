@@ -1,1 +1,12 @@
-<h1>Trainer index</h1>
+<h1>Hello, <%= @trainer.name %> </h1>
+<% @upcoming_appointments.each do |a| %>
+    <% if @client = Client.find_by_id(a.client_id) %>
+        <li><%= @client.name %> <%= a.appt_datetime %></li>
+    <% end %>
+<% end %>
+<h1>hello</h1>
+<% @appointments.each do | a | %>
+    <% if @client = Client.find_by_id(a.client_id)%>
+        <li><%= @client.name %> <%= a.appt_datetime %></li>
+    <% end %>
+<% end %>
