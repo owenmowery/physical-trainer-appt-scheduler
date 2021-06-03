@@ -16,9 +16,14 @@ class TrainersController < ApplicationController
         @trainer = Trainer.find_by_id(session[:trainer_id])
         @appointments = @trainer.appointments
         @upcoming_appointments = Appointment.upcoming_appointments(Time.now.midnight)
+        @sorted_appts = sort_by_date(@upcoming_appointments)
     end
 
     private
+
+    def sort_by_date(arr)
+        arr.sort_by {|h| h['appt_datetime']}
+    end
 
     def trainer_params
         params.permit(:name, :trainer_email, :gym_name, :password)

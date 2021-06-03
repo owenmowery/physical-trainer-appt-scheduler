@@ -8,7 +8,7 @@ class AppointmentsController < ApplicationController
 
     def show
         @appointment = Appointment.find_by_id(params[:id])
-        @client = Client.find_by_id(params[:client_id])
+        find_client
     end
    
     def new
@@ -41,17 +41,21 @@ class AppointmentsController < ApplicationController
     end
 
     def edit
-        @appointment = Appointment.find_by_id(params[:id])
-        find_client
+        if logged_in?
+            @appointment = Appointment.find_by_id(params[:id])
+            find_client
+        end
     end
 
     def update
-        @appointment = Appointment.find_by_id(params[:id])
-        find_client
-        find_trainer
-        @appointment.trainer_id = @trainer.id
-        @appointment.update(update_params)
-        redirect_to client_appointment_path(@client, @appointment)
+        if logged_in?
+            @appointment = Appointment.find_by_id(params[:id])
+            find_client
+            find_trainer
+            @appointment.trainer_id = @trainer.id
+            @appointment.update(update_params)
+            redirect_to client_appointment_path(@client, @appointment)
+        end
     end
 
     private
