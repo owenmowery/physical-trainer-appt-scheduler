@@ -14,7 +14,6 @@ class AppointmentsController < ApplicationController
     def new
         find_client
         @appointment = @client.appointments.build
-        #byebug
     end
 
     def create
@@ -22,9 +21,6 @@ class AppointmentsController < ApplicationController
             @client = Client.find_by_id(params[:client_id])
             @appointment = @client.appointments.build(appt_params)
             @appointment.client_id = current_user.id
-            #byebug
-            #@appointment = Appointment.new(appt_params)
-            #find_client
             trainer = Trainer.find_by_name(params_trainer_name[:trainer_name])
             @appointment.trainer_id = trainer.id
             @appointment.client_id = params[:client_id]
